@@ -1,4 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () { // Fetch products from the JSON file
+document.addEventListener("DOMContentLoaded", async function () { // Fetch products from the JSON file
+
+    await updatePanierPreview();
+
+
     fetch('json/products.json').then(response => response.json()).then(products => { // Get the product container
         const productContainer = document.getElementById('product-container');
 
@@ -66,6 +70,88 @@ document.addEventListener("DOMContentLoaded", function () { // Fetch products fr
         });
     }).catch(error => console.error('Error fetching products:', error));
 });
+async function updatePanierPreview() {
+    try {
+        const panierData = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
+        const cartPreview = document.querySelector('.shopping-cart');
+        const cartCountElement = document.querySelector('.cart_qty_cls');
+        const cartTotalElement = document.querySelector('.cart-total'); // <-- Add this line
+        const emptyCartMessage = document.querySelector('.empty-cart-message');
+        const cartTotalNotFound = document.querySelector('.cart-total-not-found'); // <-- Add this line
+
+        // Clear existing cart items
+        cartPreview.innerHTML = '';
+
+        if (panierData.length === 0) {
+            // Display a message when the cart is empty
+            if (emptyCartMessage) {
+                emptyCartMessage.style.display = 'block';
+            }
+
+            // Add "Cart total element not found." message inside a <li>
+            const cartTotalNotFoundItem = document.createElement('li');
+            cartTotalNotFoundItem.innerHTML = `<div class="total"><h5>${cartTotalNotFound.textContent}</h5></div>`;
+            cartPreview.appendChild(cartTotalNotFoundItem);
+
+            // Hide the cart total element and show the "not found" message
+            if (cartTotalElement) {
+                cartTotalElement.style.display = 'none';
+            }
+            if (cartTotalNotFound) {
+                cartTotalNotFound.style.display = 'block';
+            }
+        } else {
+            // Update the cart preview with items from panier.json
+            panierData.forEach(item => {
+                const cartItem = document.createElement('li');
+                cartItem.innerHTML = `
+                    <div class="media">
+                        <a href="#"><img alt="" class="me-3" src="${item.imageFront}"></a>
+                        <div class="media-body">
+                            <a href="#">
+                                <h4>${item.name}</h4>
+                            </a>
+                            <h4><span>${item.quantity} x ${item.price.toFixed(2)} TND</span></h4>
+                        </div>
+                    </div>
+                    <div class="close-circle"><a href="#" onclick="removeFromCart('${item.name}')"><i class="fa fa-times" aria-hidden="true"></i></a></div>
+                `;
+                cartPreview.appendChild(cartItem);
+            });
+
+            // Calculate and display the total price
+            const totalPrice = panierData.reduce((total, item) => total + item.totalPrice, 0);
+            cartPreview.innerHTML += `<li><div class="total"><h5>subtotal : <span>${totalPrice.toFixed(2)} TND</span></h5></div></li>`;
+
+            // Hide the empty cart message
+            if (emptyCartMessage) {
+                emptyCartMessage.style.display = 'none';
+            }
+
+            // Show the cart total element and hide the "not found" message
+            if (cartTotalElement) {
+                cartTotalElement.style.display = 'block';
+            }
+            if (cartTotalNotFound) {
+                cartTotalNotFound.style.display = 'none';
+            }
+        }
+
+        // Update the cart quantity
+        const totalQuantity = calculateTotalQuantity(panierData);
+        cartCountElement.textContent = totalQuantity.toString();
+
+    } catch (error) {
+        console.error('Error updating panier preview:', error);
+    }
+}
+
+
+
+
+
+
+
 // Shopping Cart Logic
 let shoppingCart = [];
 const cartContainer = document.querySelector('.cart-table tbody');
@@ -89,12 +175,10 @@ async function addToCart(productName, price, imageFront) { // Check if the produ
         });
     }
     // Update the cart icon with the total quantity
-    updateCartIcon();
-
-    // Update the shopping cart preview
-    updateCartPreview();
+  
     //    updatePanierPreview();
     await saveShoppingCartToServer()
+    await updatePanierPreview();
 
 
 }
@@ -159,96 +243,13 @@ async function clearPanier() {
         console.error('Error clearing panier:', error);
     }
 }
-async function clearShoppingCart() {
-    try {
-        const shoppingCart = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
-
-        // Create an array of promises for each item deletion
-        const deletePromises = shoppingCart.map(item => {
-            const deleteUrl = `http://localhost:3000/shoppingCart/${item.id}`;
-            return fetch(deleteUrl, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
-        });
-
-        // Wait for all the delete promises to resolve
-        const deleteResponses = await Promise.all(deletePromises);
-
-        // Check if all responses are okay
-        const allResponsesOkay = deleteResponses.every(response => response.ok);
-
-        if (allResponsesOkay) {
-            console.log('Shopping cart cleared successfully.');
-        } else {
-            console.error('Failed to clear shopping cart.');
-        }
-    } catch (error) {
-        console.error('Error clearing shopping cart:', error);
-    }
-}
 
 
 
 
 
-//    function updatePanierPreview() {
-//     // Clear the existing content in the cart container
-//     cartContainer.innerHTML = '';
 
-//     // Iterate through the shoppingCart array and create HTML elements for each item
-//     shoppingCart.forEach(item => {
-//         const row = document.createElement('tr');
 
-//         // Create and append cells for image, product name, quantity, remove button, and total price
-//         const imageCell = document.createElement('td');
-//         const imageLink = document.createElement('a');
-//         const image = document.createElement('img');
-//         image.src = item.imageFront;
-//         image.alt = '';
-//         imageLink.appendChild(image);
-//         imageCell.appendChild(imageLink);
-//         row.appendChild(imageCell);
-
-//         const productNameCell = document.createElement('td');
-//         const productNameLink = document.createElement('a');
-//         productNameLink.href = '#';
-//         productNameLink.textContent = item.name;
-//         productNameCell.appendChild(productNameLink);
-//         row.appendChild(productNameCell);
-
-//         const priceCell = document.createElement('td');
-//         priceCell.textContent = '$' + item.price.toFixed(2);
-//         row.appendChild(priceCell);
-
-//         const quantityCell = document.createElement('td');
-//         quantityCell.innerHTML = `
-//             <div class="qty-box">
-//                 <div class="input-group">
-//                     <input type="number" name="quantity" class="form-control input-number" value="${item.quantity}">
-//                 </div>
-//             </div>
-//         `;
-//         row.appendChild(quantityCell);
-
-//         const actionCell = document.createElement('td');
-//         actionCell.innerHTML = `
-//             <a href="#" class="icon"><i class="ti-close"></i></a>
-//         `;
-//         row.appendChild(actionCell);
-
-//         const totalCell = document.createElement('td');
-//         totalCell.textContent = '$' + item.totalPrice.toFixed(2);
-//         row.appendChild(totalCell);
-
-//         // Append the row to the cart container
-//         cartContainer.appendChild(row);
-//     });
-
-//     // You can add additional logic to update the total price, quantity, etc.
-// }
 
 function updateCartIcon() {
     const cartQtyElement = document.querySelector('.cart_qty_cls');
@@ -314,6 +315,9 @@ function removeFromCart(productName) { // Remove the item from the shopping cart
     updateCartPreview();
 }
 
-function calculateTotalQuantity() {
-    return shoppingCart.reduce((total, item) => total + item.quantity, 0);
+// function calculateTotalQuantity() {
+//     return shoppingCart.reduce((total, item) => total + item.quantity, 0);
+// }
+function calculateTotalQuantity(panierData) {
+    return panierData.reduce((total, item) => total + item.quantity, 0);
 }
