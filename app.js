@@ -71,6 +71,9 @@ let shoppingCart = [];
 const cartContainer = document.querySelector('.cart-table tbody');
 
 async function addToCart(productName, price, imageFront) { // Check if the product is already in the cart
+   
+    await clearPanier();
+
     const existingProduct = shoppingCart.find(item => item.name === productName);
 
     if (existingProduct) { // If the product is already in the cart, update quantity and price
@@ -98,7 +101,6 @@ async function addToCart(productName, price, imageFront) { // Check if the produ
 async function saveShoppingCartToServer() {
     console.log(shoppingCart)
     try { // Create an array to store the promises for each item
-        clearShoppingCart();
 
         const savePromises = shoppingCart.map(item => {
             return fetch('http://localhost:3000/shoppingCart', {
@@ -125,17 +127,60 @@ async function saveShoppingCartToServer() {
         console.error('Error saving shopping cart to server:', error);
     }
 }
-async function clearShoppingCart() {
+
+async function clearPanier() {
     try {
-        const response = await fetch('http://localhost:3000/shoppingCart/', {
-            method: 'PATCH',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ shoppingCart: [] }),
+        const panierResponse = await fetch('http://localhost:3000/shoppingCart');
+        const panierData = await panierResponse.json();
+
+        // Delete each item in panier.json
+        const deletePromises = panierData.map(item => {
+            const deleteUrl = `http://localhost:3000/shoppingCart/${item.id}`;
+            return fetch(deleteUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
         });
 
-        if (response.ok) {
+        // Wait for all the delete promises to resolve
+        const deleteResponses = await Promise.all(deletePromises);
+
+        // Check if all responses are okay
+        const allResponsesOkay = deleteResponses.every(response => response.ok);
+
+        if (allResponsesOkay) {
+            console.log('Panier cleared successfully.');
+        } else {
+            console.error('Failed to clear panier.');
+        }
+    } catch (error) {
+        console.error('Error clearing panier:', error);
+    }
+}
+async function clearShoppingCart() {
+    try {
+        const shoppingCart = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
+
+        // Create an array of promises for each item deletion
+        const deletePromises = shoppingCart.map(item => {
+            const deleteUrl = `http://localhost:3000/shoppingCart/${item.id}`;
+            return fetch(deleteUrl, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+        });
+
+        // Wait for all the delete promises to resolve
+        const deleteResponses = await Promise.all(deletePromises);
+
+        // Check if all responses are okay
+        const allResponsesOkay = deleteResponses.every(response => response.ok);
+
+        if (allResponsesOkay) {
             console.log('Shopping cart cleared successfully.');
         } else {
             console.error('Failed to clear shopping cart.');
@@ -144,6 +189,11 @@ async function clearShoppingCart() {
         console.error('Error clearing shopping cart:', error);
     }
 }
+
+
+
+
+
 //    function updatePanierPreview() {
 //     // Clear the existing content in the cart container
 //     cartContainer.innerHTML = '';

@@ -1,12 +1,39 @@
 {
+  "routes": {
+    "/shoppingCart/*": "/shoppingCart"
+  },
   "shoppingCart": [
     {
-      "id": "05a3",
-      "name": "Chaise en tissu patchwork avec accoudoirs",
+      "id": "a62c",
+      "name": "chaise malmo",
       "price": 40,
       "quantity": 1,
       "totalPrice": 40,
-      "imageFront": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg"
+      "imageFront": "../assets/img/malmo2.png"
+    },
+    {
+      "id": "5c7c",
+      "name": "Table D120 avec socle Blinz",
+      "price": 40,
+      "quantity": 1,
+      "totalPrice": 40,
+      "imageFront": "../assets/img/Table D120 avec socle Blin.jpeg"
+    },
+    {
+      "id": "6972",
+      "name": "Chaise Gloss Transparente Noire",
+      "price": 40,
+      "quantity": 1,
+      "totalPrice": 40,
+      "imageFront": "../assets/img/Chaise Gloss Transparente Noire (1).webp"
+    },
+    {
+      "id": "ff56",
+      "name": "CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR",
+      "price": 40,
+      "quantity": 1,
+      "totalPrice": 40,
+      "imageFront": "../assets/img/CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR.jpeg"
     }
   ]
 }
