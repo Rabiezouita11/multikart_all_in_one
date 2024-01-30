@@ -214,7 +214,7 @@ async function addToCart(productName, price, imageFront) {
                 imageFront: imageFront
             });
         }
-
+        clearPanier();
         // Save the updated cart to the server
         await saveShoppingCartToServer();
 
