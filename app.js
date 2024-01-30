@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", async function () { // Fetch produ
                             <div class="product-box">
                                 <div class="img-wrapper">
                                     <div class="front">
-                                        <a href="product-page(no-sidebar).html"><img src="${
+                                        <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
                 product.imageFront
             }"
                                                 class="img-fluid blur-up lazyload bg-img" alt=""></a>
                                     </div>
                                     <div class="back">
-                                        <a href="product-page(no-sidebar).html"><img src="${
+                                        <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
                 product.imageBack
             }"
                                                 class="img-fluid blur-up lazyload bg-img" alt=""></a>
@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async function () { // Fetch produ
                                     <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
                                             class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                                     </div>
-                                    <a href="product-page(no-sidebar).html">
+                                    <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}">
                                         <h6>${
                 product.name
             }</h6>
