@@ -1,0 +1,12 @@
+{
+  "shoppingCart": [
+    {
+      "id": "05a3",
+      "name": "Chaise en tissu patchwork avec accoudoirs",
+      "price": 40,
+      "quantity": 1,
+      "totalPrice": 40,
+      "imageFront": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg"
+    }
+  ]
+}
