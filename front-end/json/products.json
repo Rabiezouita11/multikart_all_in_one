@@ -1,63 +1,154 @@
-[
+{
+  "products": [
     {
       "name": "Chaise",
       "imageFront": "../assets/img/chaise en bois (2).jpg",
       "imageBack": "../assets/img/chaise en bois (2).jpg",
-      "price": 100.00
+      "price": 100.00,
+      "category":"chaise"
     },
     {
       "name": "Chaise en tissu patchwork avec accoudoirs",
       "imageFront": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg",
       "imageBack": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"chaise"
     },
     {
       "name": "chaise malmo",
       "imageFront": "../assets/img/malmo2.png",
       "imageBack": "../assets/img/malmo2.png",
-      "price": 40.00
+      "price": 40.00,
+      "category":"chaise"
     },
     {
       "name": "Chaise Gloss Transparente Noire",
       "imageFront": "../assets/img/Chaise Gloss Transparente Noire (1).webp",
       "imageBack": "../assets/img/Chaise Gloss Transparente Noire (1).webp",
-      "price": 40.00
+      "price": 40.00,
+      "category":"chaise"
     },
     {
       "name": "CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR",
       "imageFront": "../assets/img/CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR.jpeg",
       "imageBack": "../assets/img/CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR.jpeg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"chaise"
     },
     {
       "name": "Rocking chair Chesterfield Victoria",
       "imageFront": "../assets/img/Rocking chair Chesterfield Victoria (1).jpeg",
       "imageBack": "../assets/img/Rocking chair Chesterfield Victoria (1).jpeg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"chaise"
     },
     {
       "name": "Chaise et Table extensible",
       "imageFront": "../assets/img/Chaise et Table extensible.jpeg",
       "imageBack": "../assets/img/Chaise et Table extensible.jpeg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"tous"
     },
     {
       "name": "Table D120 avec socle Blinz",
       "imageFront": "../assets/img/Table D120 avec socle Blin.jpeg",
       "imageBack": "../assets/img/Table D120 avec socle Blin.jpeg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"table"
     },
     {
       "name": "Table et 4 fauteuils de jardin couleur blanc",
       "imageFront": "../assets/img/Table et 4 fauteuils de jardin couleur blanc.jpeg",
       "imageBack": "../assets/img/Table et 4 fauteuils de jardin couleur blanc.jpeg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"table"
     },
     {
       "name": "Table extensible",
       "imageFront": "../assets/img/Table extensible.jpeg",
       "imageBack": "../assets/img/Table extensible.jpeg",
-      "price": 40.00
+      "price": 40.00,
+      "category":"table"
+    },
+    {
+      "id": "b1fa",
+      "name": "chaise ",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 200,
+      "category": "chaise"
+    },
+    {
+      "id": "fc9f",
+      "name": "table",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 400,
+      "category": "table"
+    },
+    {
+      "id": "9bc3",
+      "name": "aaaa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 2,
+      "category": "table"
+    },
+    {
+      "id": "45ac",
+      "name": "aaa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 2,
+      "category": "chaise"
+    },
+    {
+      "id": "c683",
+      "name": "aa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 1,
+      "category": "chaise"
+    },
+    {
+      "id": "2aa3",
+      "name": "aa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 3,
+      "category": "chaise"
+    },
+    {
+      "id": "2970",
+      "name": "aaa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": -4,
+      "category": "chaise"
+    },
+    {
+      "id": "e3da",
+      "name": "aaa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 4,
+      "category": "chaise"
+    },
+    {
+      "id": "05e5",
+      "name": "aaa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 2,
+      "category": "chaise"
+    },
+    {
+      "id": "eba1",
+      "name": "aaa",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 2,
+      "category": "chaise"
     }
   ]
-  
+}

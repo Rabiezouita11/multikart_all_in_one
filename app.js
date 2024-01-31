@@ -1,75 +1,188 @@
-document.addEventListener("DOMContentLoaded", async function () { // Fetch products from the JSON file
 
+document.addEventListener("DOMContentLoaded", async function () {
+    // Fetch products from the JSON file
     await updatePanierPreview();
 
-
-    fetch('json/products.json').then(response => response.json()).then(products => { // Get the product container
+    fetch('json/products.json')
+    .then(response => response.json())
+    .then(res => {
         const productContainer = document.getElementById('product-container');
 
-        // Iterate through the products and create HTML for each product
-        products.forEach(product => {
-            const productHTML = `
-                <div class="col-md-3 mb-3">
-                <div class="product-4 product-m no-arrow">
-                            <div class="product-box">
-                                <div class="img-wrapper">
-                                    <div class="front">
-                                        <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
-                product.imageFront
-            }"
-                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
+        // Function to filter products by letter
+        function filterProductsByLetter(letter) {
+            return res.products.filter(product => product.name.toLowerCase().includes(letter.toLowerCase()));
+        }
+
+        // Render products based on initial data
+        renderProducts(res.products);
+
+        // Add event listener to the search input
+        const searchInput = document.getElementById('searchInput');
+        searchInput.addEventListener('input', function () {
+            const searchLetter = this.value.trim();
+            const filteredProducts = filterProductsByLetter(searchLetter);
+            renderProducts(filteredProducts);
+        });
+
+        // Function to render products
+        function renderProducts(products) {
+            // Clear previous products
+            productContainer.innerHTML = '';
+
+            // Iterate through the filtered products and create HTML for each product
+            products.forEach(product => {
+                const productHTML = `
+                    <div class="col-md-3 mb-3">
+                    <div class="product-4 product-m no-arrow">
+                                <div class="product-box">
+                                    <div class="img-wrapper">
+                                        <div class="front">
+                                            <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
+                    product.imageFront
+                }"
+                                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        </div>
+                                        <div class="back">
+                                            <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
+                    product.imageBack
+                }"
+                                                    class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                        </div>
+                                        <div class="cart-info cart-wrap">
+                                            <button onclick="addToCart('${
+                    product.name
+                }', ${
+                    product.price
+                }, '${
+                    product.imageFront
+                }')" title="Add to cart">
+                                                <i class="ti-shopping-cart"></i>
+                                            </button>
+                                            <a href="javascript:void(0)" title="Add to Wishlist">
+                                                <i class="ti-heart" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
+                                                <i class="ti-search" aria-hidden="true"></i>
+                                            </a>
+                                            <a href="compare.html" title="Compare">
+                                                <i class="ti-reload" aria-hidden="true"></i>
+                                            </a>
+                                        </div>
                                     </div>
-                                    <div class="back">
-                                        <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
-                product.imageBack
-            }"
-                                                class="img-fluid blur-up lazyload bg-img" alt=""></a>
-                                    </div>
-                                    <div class="cart-info cart-wrap">
-                                        <button onclick="addToCart('${
-                product.name
-            }', ${
-                product.price
-            }, '${
-                product.imageFront
-            }')" title="Add to cart">
-                                            <i class="ti-shopping-cart"></i>
-                                        </button>
-                                        <a href="javascript:void(0)" title="Add to Wishlist">
-                                            <i class="ti-heart" aria-hidden="true"></i>
+                                    <div class="product-detail">
+                                        <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                        </div>
+                                        <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}">
+                                            <h6>${
+                    product.name
+                }</h6>
                                         </a>
-                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
-                                            <i class="ti-search" aria-hidden="true"></i>
-                                        </a>
-                                        <a href="compare.html" title="Compare">
-                                            <i class="ti-reload" aria-hidden="true"></i>
-                                        </a>
+                                        <h4>${
+                    product.price
+                } TND</h4>
+                                       
                                     </div>
-                                </div>
-                                <div class="product-detail">
-                                    <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
-                                            class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
-                                    </div>
-                                    <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}">
-                                        <h6>${
-                product.name
-            }</h6>
-                                    </a>
-                                    <h4>${
-                product.price
-            } TND</h4>
-                                   
                                 </div>
                             </div>
                         </div>
-                    </div>
-                `;
-
-            // Append the product HTML to the product container
-            productContainer.innerHTML += productHTML;
-        });
-    }).catch(error => console.error('Error fetching products:', error));
+                    `;
+    
+                // Append the product HTML to the product container
+                productContainer.innerHTML += productHTML;
+            });
+        }
+    })
+    .catch(error => console.error('Error fetching products:', error));
 });
+    // Function to filter products by category
+    async function filterProducts(category) {
+        await updatePanierPreview();
+
+        fetch('json/products.json')
+        .then(response => response.json())
+        .then(res => {
+            const productContainer = document.getElementById('product-container');    
+            // Render products based on initial data
+            renderProducts(res.products);
+    
+            // Function to render products
+            function renderProducts(products) {
+                // Clear previous products
+                productContainer.innerHTML = '';
+                products.forEach(product => {
+                    if (category === 'tous' || product.category === category) {
+                       console.log(product)
+                      const productHTML=`
+                        <div class="col-md-3 mb-3">
+                        <div class="product-4 product-m no-arrow">
+                                    <div class="product-box">
+                                        <div class="img-wrapper">
+                                            <div class="front">
+                                                <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
+                        product.imageFront
+                    }"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="back">
+                                                <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}"><img src="${
+                        product.imageBack
+                    }"
+                                                        class="img-fluid blur-up lazyload bg-img" alt=""></a>
+                                            </div>
+                                            <div class="cart-info cart-wrap">
+                                                <button onclick="addToCart('${
+                        product.name
+                    }', ${
+                        product.price
+                    }, '${
+                        product.imageFront
+                    }')" title="Add to cart">
+                                                    <i class="ti-shopping-cart"></i>
+                                                </button>
+                                                <a href="javascript:void(0)" title="Add to Wishlist">
+                                                    <i class="ti-heart" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="#" data-bs-toggle="modal" data-bs-target="#quick-view" title="Quick View">
+                                                    <i class="ti-search" aria-hidden="true"></i>
+                                                </a>
+                                                <a href="compare.html" title="Compare">
+                                                    <i class="ti-reload" aria-hidden="true"></i>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="product-detail">
+                                            <div class="rating"><i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+                                                    class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            </div>
+                                            <a href="product-page(no-sidebar).html?name=${encodeURIComponent(product.name)}&price=${product.price}&imageFront=${encodeURIComponent(product.imageFront)}&imageBack=${encodeURIComponent(product.imageBack)}">
+                                                <h6>${
+                        product.name
+                    }</h6>
+                                            </a>
+                                            <h4>${
+                        product.price
+                    } TND</h4>
+                                           
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                        productContainer.innerHTML += productHTML;
+                    }
+                });
+                // Iterate through the filtered products and create HTML for each product
+         
+            }
+         this.closeNav();
+        })
+        .catch(error => console.error('Error fetching products:', error));
+       
+    }
+    function closeNav() {
+        document.getElementById("mySidenav").classList.remove('open-side');
+    }
 async function updatePanierPreview() {
     try {
         const panierData = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
