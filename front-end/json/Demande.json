@@ -1,0 +1,66 @@
+{
+  "Cart": [
+    {
+      "id": "d54d",
+      "field-name": "Client User",
+      "field-email": "client@example.com",
+      "field-address": "aaaa",
+      "products": [
+        {
+          "name": "Chaise",
+          "quantity": 1,
+          "price": null
+        },
+        {
+          "name": "Chaise en tissu patchwork avec accoudoirs",
+          "quantity": 1,
+          "price": null
+        }
+      ],
+      "subtotal": 140
+    },
+    {
+      "id": "7f57",
+      "field-name": "Client User",
+      "field-email": "client@example.com",
+      "field-address": "aaaa",
+      "products": [
+        {
+          "name": "Chaise",
+          "quantity": 1,
+          "price": null
+        },
+        {
+          "name": "Chaise en tissu patchwork avec accoudoirs",
+          "quantity": 1,
+          "price": null
+        }
+      ],
+      "subtotal": 140
+    },
+    {
+      "id": "7acc",
+      "field-name": "Client User",
+      "field-email": "client@example.com",
+      "field-address": "KEF",
+      "products": [
+        {
+          "name": "Chaise Gloss Transparente Noire",
+          "quantity": 2,
+          "price": null
+        },
+        {
+          "name": "Chaise",
+          "quantity": 2,
+          "price": null
+        },
+        {
+          "name": "Chaise en tissu patchwork avec accoudoirs",
+          "quantity": 2,
+          "price": null
+        }
+      ],
+      "subtotal": 360
+    }
+  ]
+}

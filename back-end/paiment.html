@@ -65,13 +65,18 @@
                 <div class="nav-right col">
                     <ul class="nav-menus">
                         <li>
-                            
+                            <!-- <form class="form-inline search-form">
+                                <div class="form-group">
+                                    <input class="form-control-plaintext" type="search" placeholder="Search.."><span
+                                        class="d-sm-none mobile-search"><i data-feather="search"></i></span>
+                                </div>
+                            </form> -->
                         </li>
                         <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i
                                     data-feather="maximize-2"></i></a></li>
                        
                       
-                    
+
                         <li class="onhover-dropdown">
                             <div class="media align-items-center">
                                 <img class="align-self-center pull-right img-50 rounded-circle"
@@ -139,7 +144,7 @@
             <!-- Page Sidebar Ends-->
 
             <!-- Right sidebar Start-->
-         
+           
             <!-- Right sidebar Ends-->
 
             <div class="page-body">
@@ -149,7 +154,8 @@
                         <div class="row">
                             <div class="col-lg-6">
                                 <div class="page-header-left">
-                                    <h3>Produits
+                                    <h3>Products
+                                        <small>Multikart Admin panel</small>
                                     </h3>
                                 </div>
                             </div>
@@ -160,8 +166,8 @@
                                             <i data-feather="home"></i>
                                         </a>
                                     </li>
-                                    
-                                    <li class="breadcrumb-item active">Produits</li>
+                                    <li class="breadcrumb-item">Physical</li>
+                                    <li class="breadcrumb-item active">Paiment</li>
                                 </ol>
                             </div>
                         </div>
@@ -175,46 +181,13 @@
                         <div class="col-sm-12">
                             <div class="card">
                                 <div class="card-header">
-                                  
-
-                                    <button type="button" class="btn btn-primary  mt-md-0 mt-2" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Products</button>
-
-                                    <!-- Add Product Modal -->
-                                    <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <form id="addProductForm">
-                                                        <div class="mb-3">
-                                                            <label for="productName" class="form-label">Product Name</label>
-                                                            <input type="text" class="form-control" id="productName" required>
-                                                        </div>
-
-                                                         <div class="mb-3">
-            <label for="productCategory" class="form-label">Category</label>
-            <select class="form-control" id="productCategory" required>
-                <option value="chaise">Chaise</option>
-                <option value="table">Table</option>
-                <option value="tous">Tous</option>
-                <option value="lit">Lit</option>
-            </select>
-        </div>
-                                                        <div class="mb-3">
-                                                            <label for="productPrice" class="form-label">Price</label>
-                                                            <input type="number" class="form-control" id="productPrice" required>
-                                                        </div>
-                                                        <button type="submit" class="btn btn-primary"  >Save</button>  
-
-                                                    </form>
-                                                </div>
-                                            </div>
+                                    <!-- <form class="form-inline search-form search-box">
+                                        <div class="form-group">
+                                            <input class="form-control-plaintext" type="search" placeholder="Search..">
                                         </div>
-                                    </div>
-                                    
+                                    </form> -->
+
+                                  
                                 </div>
 
                                 <div class="card-body">
@@ -222,16 +195,19 @@
                                         <table class="table all-package table-category" id="editableTable">
                                             <thead>
                                                 <tr>
-                                                    <th>Image</th>
-                                                    <th>Name</th>
-                                                    <th>categorie</th>
-                                                    <th>Price</th>
+                                                    <th>Nom </th>
+                                                    <th>Email</th>
+                                                    <th>Adresse</th>
+                                                    <th>Prix Totale</th>
+
+
                                                 </tr>
                                             </thead>
                                             <tbody id="productTableBody">
                                                 <!-- Product rows will be dynamically populated here -->
                                             </tbody>
                                         </table>
+                                        
                                     </div>
                                 </div>
                             
@@ -318,7 +294,7 @@
     <!--script admin-->
     <script src="assets/js/admin-script.js"></script>
     <script src="../logoutAdmin.js"></script>
-<script src="../ProductAdmin.js"></script>
+<script src="../PaimentAdmin.js"></script>
 </body>
 
 </html>
