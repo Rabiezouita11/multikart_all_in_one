@@ -61,6 +61,25 @@
         }
       ],
       "subtotal": 360
+    },
+    {
+      "id": "553c",
+      "field-name": "Client User",
+      "field-email": "client@example.com",
+      "field-address": "kef",
+      "products": [
+        {
+          "name": "chaise malmo",
+          "quantity": 2,
+          "price": null
+        },
+        {
+          "name": "Chaise en tissu patchwork avec accoudoirs",
+          "quantity": 1,
+          "price": null
+        }
+      ],
+      "subtotal": 120
     }
   ]
 }

@@ -4,9 +4,11 @@
       "name": "chaise bingo",
       "imageFront": "../assets/img/chaise en bois (2).jpg",
       "imageBack": "../assets/img/chaise en bois (2).jpg",
+
       "price": 100.03,
       "category": "chaise",
       "id": "15c6"
+
     },
     {
       "name": "Chaise en tissu patchwork avec accoudoirs",
@@ -15,6 +17,7 @@
       "price": 40,
       "category": "chaise",
       "id": "99fa"
+
     },
     {
       "name": "chaise malmo",
@@ -23,6 +26,7 @@
       "price": 40,
       "category": "chaise",
       "id": "e458"
+
     },
     {
       "name": "Chaise Gloss Transparente Noire",
@@ -159,6 +163,14 @@
       "imageBack": "../assets/img/logo.png",
       "price": 33,
       "category": "chaise"
+    },
+    {
+      "id": "dfc3",
+      "name": "9at3a",
+      "imageFront": "../assets/img/logo.png",
+      "imageBack": "../assets/img/logo.png",
+      "price": 25,
+      "category": "lit"
     }
   ]
 }
