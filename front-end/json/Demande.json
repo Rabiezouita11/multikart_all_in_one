@@ -80,6 +80,25 @@
         }
       ],
       "subtotal": 120
+    },
+    {
+      "id": "3355",
+      "field-name": "Client User",
+      "field-email": "client@example.com",
+      "field-address": "ds",
+      "products": [
+        {
+          "name": "chaise malmo",
+          "quantity": 2,
+          "price": null
+        },
+        {
+          "name": "Chaise en tissu patchwork avec accoudoirs",
+          "quantity": 1,
+          "price": null
+        }
+      ],
+      "subtotal": 120
     }
   ]
 }
