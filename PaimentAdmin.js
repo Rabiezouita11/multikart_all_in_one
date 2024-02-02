@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch('http://127.0.0.1:8081/front-end/json/Demande.json')
+    fetch('http://127.0.0.1:8080/front-end/json/Demande.json')
         .then(response => response.json())
         .then(data => {
             const productTableBody = document.getElementById('productTableBody');

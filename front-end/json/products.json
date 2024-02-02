@@ -1,10 +1,10 @@
 {
   "products": [
     {
-      "name": "aaaa",
+      "name": "chaise bingo",
       "imageFront": "../assets/img/chaise en bois (2).jpg",
       "imageBack": "../assets/img/chaise en bois (2).jpg",
-      "price": 100,
+      "price": 100.03,
       "category": "chaise",
       "id": "15c6"
     },
@@ -153,11 +153,11 @@
       "category": "chaise"
     },
     {
-      "id": "eba1",
-      "name": "aaa",
+      "id": "288b",
+      "name": "aaaa",
       "imageFront": "../assets/img/logo.png",
       "imageBack": "../assets/img/logo.png",
-      "price": 2,
+      "price": 33,
       "category": "chaise"
     }
   ]
