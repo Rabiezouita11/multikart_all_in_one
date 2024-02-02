@@ -1,16 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Fetch data from demande.json
-    fetch('http://127.0.0.1:8081/front-end/json/Demande.json')
+    fetch('http://127.0.0.1:8080/front-end/json/Demande.json')
         .then(response => response.json())
         .then(data => {
             const productTableBody = document.getElementById('productTableBody');
             
-            // Clear existing table rows
             productTableBody.innerHTML = '';
 
-            // Iterate through each entry in the "Cart" array
             data.Cart.forEach(entry => {
-                // Create a table row for each entry
                 const row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${entry['field-name']}</td>
@@ -22,10 +18,6 @@ document.addEventListener('DOMContentLoaded', function () {
                 `;
                 productTableBody.appendChild(row);
 
-                // Iterate through the products in the current entry
-                
-
-                // Create a subtotal row for each entry
           
             });
         })

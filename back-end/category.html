@@ -226,6 +226,7 @@
                                                     <th>Name</th>
                                                     <th>categorie</th>
                                                     <th>Price</th>
+                                                    <th>Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody id="productTableBody">
@@ -292,6 +293,46 @@
             </div>
         </div>
     </div>
+
+
+    <!-- Edit Product Modal -->
+    <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="editProductModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Edit Product Form -->
+                    <form id="editProductForm">
+                        <div class="mb-3">
+                            <label for="editProductName" class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="editProductName" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editProductCategory" class="form-label">Category</label>
+                            <select class="form-control" id="editProductCategory" required>
+                                <option value="chaise">Chaise</option>
+                                <option value="table">Table</option>
+                                <option value="tous">Tous</option>
+                                <option value="lit">Lit</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label for="editProductPrice" class="form-label">Price (TND)</label>
+                            <input type="number" step="0.01" class="form-control" id="editProductPrice" required>
+                        </div>
+                        <!-- Hidden input to store the product ID -->
+                        <input type="hidden" id="editProductId">
+                        <button type="submit" class="btn btn-primary">Update Product</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
 
     <!-- latest jquery-->
     <script src="assets/js/jquery-3.3.1.min.js"></script>

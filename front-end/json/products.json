@@ -1,74 +1,88 @@
 {
   "products": [
     {
-      "name": "Chaise",
+      "name": "chaise bingo",
       "imageFront": "../assets/img/chaise en bois (2).jpg",
       "imageBack": "../assets/img/chaise en bois (2).jpg",
-      "price": 100,
-      "category": "chaise"
+
+      "price": 100.03,
+      "category": "chaise",
+      "id": "15c6"
+
     },
     {
       "name": "Chaise en tissu patchwork avec accoudoirs",
       "imageFront": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg",
       "imageBack": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg",
       "price": 40,
-      "category": "chaise"
+      "category": "chaise",
+      "id": "99fa"
+
     },
     {
       "name": "chaise malmo",
       "imageFront": "../assets/img/malmo2.png",
       "imageBack": "../assets/img/malmo2.png",
       "price": 40,
-      "category": "chaise"
+      "category": "chaise",
+      "id": "e458"
+
     },
     {
       "name": "Chaise Gloss Transparente Noire",
       "imageFront": "../assets/img/Chaise Gloss Transparente Noire (1).webp",
       "imageBack": "../assets/img/Chaise Gloss Transparente Noire (1).webp",
       "price": 40,
-      "category": "chaise"
+      "category": "chaise",
+      "id": "f310"
     },
     {
       "name": "CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR",
       "imageFront": "../assets/img/CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR.jpeg",
       "imageBack": "../assets/img/CHAISE SECRÉTAIRE OPÉRATEUR AVEC ACCOUDOIR.jpeg",
       "price": 40,
-      "category": "chaise"
+      "category": "chaise",
+      "id": "7cff"
     },
     {
       "name": "Rocking chair Chesterfield Victoria",
       "imageFront": "../assets/img/Rocking chair Chesterfield Victoria (1).jpeg",
       "imageBack": "../assets/img/Rocking chair Chesterfield Victoria (1).jpeg",
       "price": 40,
-      "category": "chaise"
+      "category": "chaise",
+      "id": "d546"
     },
     {
       "name": "Chaise et Table extensible",
       "imageFront": "../assets/img/Chaise et Table extensible.jpeg",
       "imageBack": "../assets/img/Chaise et Table extensible.jpeg",
       "price": 40,
-      "category": "tous"
+      "category": "tous",
+      "id": "a558"
     },
     {
       "name": "Table D120 avec socle Blinz",
       "imageFront": "../assets/img/Table D120 avec socle Blin.jpeg",
       "imageBack": "../assets/img/Table D120 avec socle Blin.jpeg",
       "price": 40,
-      "category": "table"
+      "category": "table",
+      "id": "2c57"
     },
     {
       "name": "Table et 4 fauteuils de jardin couleur blanc",
       "imageFront": "../assets/img/Table et 4 fauteuils de jardin couleur blanc.jpeg",
       "imageBack": "../assets/img/Table et 4 fauteuils de jardin couleur blanc.jpeg",
       "price": 40,
-      "category": "table"
+      "category": "table",
+      "id": "77ee"
     },
     {
       "name": "Table extensible",
       "imageFront": "../assets/img/Table extensible.jpeg",
       "imageBack": "../assets/img/Table extensible.jpeg",
       "price": 40,
-      "category": "table"
+      "category": "table",
+      "id": "661f"
     },
     {
       "id": "b1fa",
@@ -143,11 +157,11 @@
       "category": "chaise"
     },
     {
-      "id": "eba1",
-      "name": "aaa",
+      "id": "288b",
+      "name": "aaaa",
       "imageFront": "../assets/img/logo.png",
       "imageBack": "../assets/img/logo.png",
-      "price": 2,
+      "price": 33,
       "category": "chaise"
     },
     {

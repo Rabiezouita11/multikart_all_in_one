@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", function () {
             userData[key] = value;
         });
 
-        // Make a POST request to JSON Server
         try {
             const response = await fetch('http://127.0.0.1:8080/json/users.json', {
 
@@ -27,7 +26,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
             const data = await response.json();
             console.log('User registered successfully:', data);
-            // You can redirect or perform other actions after registration
         } catch (error) {
             console.error('Error registering user:', error);
         }
