@@ -8,12 +8,10 @@ document.addEventListener('DOMContentLoaded', function () {
         const formData = new FormData(checkoutForm);
         const jsonData = {};
 
-        // Convert form data to JSON
         formData.forEach((value, key) => {
             jsonData[key] = value;
         });
 
-        // Get product list and subtotal
         const productListItems = productList.querySelectorAll('li');
         const products = [];
         productListItems.forEach(item => {
@@ -26,11 +24,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const subtotal = parseFloat(subtotalElement.textContent);
 
-        // Add product list and subtotal to JSON data
         jsonData.products = products;
         jsonData.subtotal = subtotal;
 
-        // Save JSON data to file using fetch API
         fetch('http://localhost:4000/Cart', {
             method: 'POST',
             headers: {

@@ -1,4 +1,3 @@
-// cart.js
 
 document.addEventListener("DOMContentLoaded", async function () {
   await updatePanierPreview();
@@ -11,26 +10,20 @@ async function updatePanierPreview() {
     );
     const cartTableBody = document.querySelector(".cart-table tbody");
     const totalPriceElement = document.getElementById("totalPrice");
-    const checkoutButton = document.querySelector(".btn-checkout"); // Sélectionnez le bouton "check out"
+    const checkoutButton = document.querySelector(".btn-checkout"); 
 
-    // Clear existing cart items
     cartTableBody.innerHTML = "";
 
     if (panierData.length === 0) {
-      // Handle the case when the cart is empty
-      // ...
-
-      // Set the total price to 0 when the cart is empty
+     
       if (totalPriceElement) {
         totalPriceElement.textContent = "0.00TND";
       }
 
-      // Hide the checkout button when the cart is empty
       if (checkoutButton) {
         checkoutButton.style.display = "none";
       }
     } else {
-      // Update the cart preview with items from panier.json
       panierData.forEach((item) => {
         const cartItemRow = document.createElement("tr");
         cartItemRow.innerHTML = `
@@ -56,7 +49,6 @@ async function updatePanierPreview() {
         cartTableBody.appendChild(cartItemRow);
       });
      
-      // Calculate and display the total price
       const totalPrice = panierData.reduce(
         (total, item) => total + item.totalPrice,
         0
@@ -65,17 +57,13 @@ async function updatePanierPreview() {
         totalPriceElement.textContent = `${totalPrice.toFixed(2)}TND`;
       }
 
-      // Show the checkout button when the cart has items
-      // if (checkoutButton) {
-      //     checkoutButton.style.display = 'block';
-      // }
+    
     }
   } catch (error) {
     console.error("Error updating panier preview:", error);
   }
 }
 
-// Function to call the API and remove an item from the cart
 const removeFromCartApi = async (itemId) => {
   try {
     const response = await fetch(
@@ -98,19 +86,14 @@ const removeFromCartApi = async (itemId) => {
   }
 };
 
-// Function to handle removing an item from the cart
 const removeFromCart = async (itemId) => {
-  // Assuming you have some logic here to confirm with the user before removing
 
-  // Call the API to remove the item from the cart
   const response = await removeFromCartApi(itemId);
 
   // Update the cart preview after the item is removed
   updatePanierPreview();
 };
 
-// Function to call the API and update the quantity of an item in the cart
-// Function to call the API and update the quantity of an item in the cart
 const updateQuantityApi = async (itemId, newQuantity) => {
   try {
     const response = await fetch(
@@ -127,7 +110,6 @@ const updateQuantityApi = async (itemId, newQuantity) => {
     );
 
     if (!response.ok) {
-      // Log the error details or handle it appropriately
       console.error(
         "Failed to update quantity:",
         response.status,
@@ -139,14 +121,12 @@ const updateQuantityApi = async (itemId, newQuantity) => {
     const updatedItem = await response.json();
     updatedItem.totalPrice = updatedItem.price * newQuantity;
 
-    // Update the totalPrice in panier.json on the server
     await updateTotalPriceOnServer(itemId, updatedItem.totalPrice);
 
     return updatedItem;
   } catch (error) {
-    // Log the error details or handle it appropriately
     console.error("Error updating quantity:", error);
-    throw error; // Propagate the error to the calling function
+    throw error; 
   }
 };
 
@@ -179,23 +159,19 @@ const updateTotalPriceOnServer = async (itemId, newTotalPrice) => {
   }
 };
 
-// Function to handle updating the quantity of an item in the cart
 const updateQuantity = async (itemId, newQuantity) => {
-  // Assuming you have some logic here to validate the new quantity
 
-  // Call the API to update the quantity of the item in the cart
   const response = await updateQuantityApi(itemId, newQuantity);
 
-  // Update the cart preview after the quantity is updated
   updatePanierPreview();
 };
 
 function redirectUser() {
   const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
   if (!loggedInUser) {
-    window.location.href = "login.html"; // Redirect to login page if not logged in
-    return; // Stop further execution of the function
+    window.location.href = "login.html"; 
+    return; 
   }else{
-    window.location.href = "checkout.html"; // Redirect to login page if not logged in
+    window.location.href = "checkout.html"; 
   }
 }

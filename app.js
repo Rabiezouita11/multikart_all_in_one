@@ -1,6 +1,5 @@
 
 document.addEventListener("DOMContentLoaded", async function () {
-    // Fetch products from the JSON file
     await updatePanierPreview();
 
     fetch('json/products.json')
@@ -8,15 +7,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     .then(res => {
         const productContainer = document.getElementById('product-container');
 
-        // Function to filter products by letter
         function filterProductsByLetter(letter) {
             return res.products.filter(product => product.name.toLowerCase().includes(letter.toLowerCase()));
         }
 
-        // Render products based on initial data
         renderProducts(res.products);
 
-        // Add event listener to the search input
         const searchInput = document.getElementById('searchInput');
         searchInput.addEventListener('input', function () {
             const searchLetter = this.value.trim();
@@ -24,12 +20,9 @@ document.addEventListener("DOMContentLoaded", async function () {
             renderProducts(filteredProducts);
         });
 
-        // Function to render products
         function renderProducts(products) {
-            // Clear previous products
             productContainer.innerHTML = '';
 
-            // Iterate through the filtered products and create HTML for each product
             products.forEach(product => {
                 const productHTML = `
                     <div class="col-md-3 mb-3">
@@ -88,14 +81,12 @@ document.addEventListener("DOMContentLoaded", async function () {
                         </div>
                     `;
     
-                // Append the product HTML to the product container
                 productContainer.innerHTML += productHTML;
             });
         }
     })
     .catch(error => console.error('Error fetching products:', error));
 });
-    // Function to filter products by category
     async function filterProducts(category) {
         await updatePanierPreview();
 
@@ -103,12 +94,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         .then(response => response.json())
         .then(res => {
             const productContainer = document.getElementById('product-container');    
-            // Render products based on initial data
             renderProducts(res.products);
     
-            // Function to render products
             function renderProducts(products) {
-                // Clear previous products
                 productContainer.innerHTML = '';
                 products.forEach(product => {
                     if (category === 'tous' || product.category === category) {
@@ -172,7 +160,6 @@ document.addEventListener("DOMContentLoaded", async function () {
                         productContainer.innerHTML += productHTML;
                     }
                 });
-                // Iterate through the filtered products and create HTML for each product
          
             }
          this.closeNav();
@@ -188,25 +175,21 @@ async function updatePanierPreview() {
         const panierData = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
         const cartPreview = document.querySelector('.shopping-cart');
         const cartCountElement = document.querySelector('.cart_qty_cls');
-        const cartTotalElement = document.querySelector('.cart-total'); // <-- Add this line
+        const cartTotalElement = document.querySelector('.cart-total'); 
         const emptyCartMessage = document.querySelector('.empty-cart-message');
-        const cartTotalNotFound = document.querySelector('.cart-total-not-found'); // <-- Add this line
+        const cartTotalNotFound = document.querySelector('.cart-total-not-found'); 
 
-        // Clear existing cart items
         cartPreview.innerHTML = '';
 
         if (panierData.length === 0) {
-            // Display a message when the cart is empty
             if (emptyCartMessage) {
                 emptyCartMessage.style.display = 'block';
             }
 
-            // Add "Cart total element not found." message inside a <li>
             const cartTotalNotFoundItem = document.createElement('li');
             cartTotalNotFoundItem.innerHTML = `<div class="total"><h5>${cartTotalNotFound?.textContent || 'Cart total element not found.'}</h5></div>`;
             cartPreview.appendChild(cartTotalNotFoundItem);
 
-            // Hide the cart total element and show the "not found" message
             if (cartTotalElement) {
                 cartTotalElement.style.display = 'none';
             }
@@ -214,7 +197,6 @@ async function updatePanierPreview() {
                 cartTotalNotFound.style.display = 'block';
             }
         } else {
-            // Update the cart preview with items from panier.json
             panierData.forEach(item => {
                 const cartItem = document.createElement('li');
                 cartItem.innerHTML = `
@@ -235,16 +217,13 @@ async function updatePanierPreview() {
                 cartPreview.appendChild(cartItem);
             });
 
-            // Calculate and display the total price
             const totalPrice = panierData.reduce((total, item) => total + item.totalPrice, 0);
             cartPreview.innerHTML += `<li><div class="total"><h5>subtotal : <span>${totalPrice.toFixed(2)} TND</span></h5></div></li>`;
 
-            // Hide the empty cart message
             if (emptyCartMessage) {
                 emptyCartMessage.style.display = 'none';
             }
 
-            // Show the cart total element and hide the "not found" message
             if (cartTotalElement) {
                 cartTotalElement.style.display = 'block';
             }
@@ -253,7 +232,6 @@ async function updatePanierPreview() {
             }
         }
 
-        // Update the cart quantity
         const totalQuantity = calculateTotalQuantity(panierData);
         cartCountElement.textContent = totalQuantity.toString();
 
@@ -266,8 +244,6 @@ async function updatePanierPreview() {
 
 
 
-// Assuming you have an API endpoint for removing an item from the cart
-// Function to call the API and remove an item from the cart
 const removeFromCartApi = async (itemId) => {
     try {
         const response = await fetch(`http://localhost:3000/shoppingCart/${itemId}`, {
@@ -287,16 +263,12 @@ const removeFromCartApi = async (itemId) => {
     }
 };
 
-// Function to handle removing an item from the cart
 const removeFromCart = async (itemId) => {
     try {
-        // Call the API to remove the item from the cart
         await removeFromCartApi(itemId);
 
-        // Update the local cart array by fetching the latest data from the server
         shoppingCart = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
 
-        // Update the cart preview after the item is removed
         updatePanierPreview();
     } catch (error) {
         console.error('Error removing item from cart:', error);
@@ -305,20 +277,18 @@ const removeFromCart = async (itemId) => {
 
 
 
-// Shopping Cart Logic
 let shoppingCart = [];
 
 async function addToCart(productName, price, imageFront) {
     try {
-        // Update the local cart array by fetching the latest data from the server
         shoppingCart = await fetch('http://localhost:3000/shoppingCart').then(response => response.json());
 
         const existingProduct = shoppingCart.find(item => item.name === productName);
 
-        if (existingProduct) { // If the product is already in the cart, update quantity and price
+        if (existingProduct) {
             existingProduct.quantity += 1;
             existingProduct.totalPrice = existingProduct.quantity * existingProduct.price;
-        } else { // If the product is not in the cart, add it
+        } else {
             shoppingCart.push({
                 name: productName,
                 price: price,
@@ -328,10 +298,8 @@ async function addToCart(productName, price, imageFront) {
             });
         }
         clearPanier();
-        // Save the updated cart to the server
         await saveShoppingCartToServer();
 
-        // Update the cart preview
         updatePanierPreview();
     } catch (error) {
         console.error('Error adding item to cart:', error);
@@ -339,7 +307,7 @@ async function addToCart(productName, price, imageFront) {
 }
 async function saveShoppingCartToServer() {
     console.log(shoppingCart)
-    try { // Create an array to store the promises for each item
+    try { 
 
         const savePromises = shoppingCart.map(item => {
             return fetch('http://localhost:3000/shoppingCart', {
@@ -351,10 +319,8 @@ async function saveShoppingCartToServer() {
             });
         });
 
-        // Wait for all the promises to resolve
         const responses = await Promise.all(savePromises);
 
-        // Check if all responses are okay
         const allResponsesOkay = responses.every(response => response.ok);
 
         if (allResponsesOkay) {
@@ -372,7 +338,6 @@ async function clearPanier() {
         const panierResponse = await fetch('http://localhost:3000/shoppingCart');
         const panierData = await panierResponse.json();
 
-        // Delete each item in panier.json
         const deletePromises = panierData.map(item => {
             const deleteUrl = `http://localhost:3000/shoppingCart/${item.id}`;
             return fetch(deleteUrl, {
@@ -383,10 +348,8 @@ async function clearPanier() {
             });
         });
 
-        // Wait for all the delete promises to resolve
         const deleteResponses = await Promise.all(deletePromises);
 
-        // Check if all responses are okay
         const allResponsesOkay = deleteResponses.every(response => response.ok);
 
         if (allResponsesOkay) {
