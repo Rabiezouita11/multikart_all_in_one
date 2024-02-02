@@ -4,29 +4,25 @@
       "name": "chaise bingo",
       "imageFront": "../assets/img/chaise en bois (2).jpg",
       "imageBack": "../assets/img/chaise en bois (2).jpg",
-
       "price": 100.03,
       "category": "chaise",
       "id": "15c6"
-
     },
     {
-      "name": "Chaise en tissu patchwork avec accoudoirs",
+      "name": "chaise",
       "imageFront": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg",
       "imageBack": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg",
-      "price": 40,
+      "price": 100.03,
       "category": "chaise",
       "id": "99fa"
-
     },
     {
       "name": "chaise malmo",
       "imageFront": "../assets/img/malmo2.png",
       "imageBack": "../assets/img/malmo2.png",
-      "price": 40,
+      "price": 100.03,
       "category": "chaise",
       "id": "e458"
-
     },
     {
       "name": "Chaise Gloss Transparente Noire",
@@ -99,78 +95,7 @@
       "imageBack": "../assets/img/logo.png",
       "price": 400,
       "category": "table"
-    },
-    {
-      "id": "9bc3",
-      "name": "aaaa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 2,
-      "category": "table"
-    },
-    {
-      "id": "45ac",
-      "name": "aaa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 2,
-      "category": "chaise"
-    },
-    {
-      "id": "c683",
-      "name": "aa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 1,
-      "category": "chaise"
-    },
-    {
-      "id": "2aa3",
-      "name": "aa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 3,
-      "category": "chaise"
-    },
-    {
-      "id": "2970",
-      "name": "aaa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": -4,
-      "category": "chaise"
-    },
-    {
-      "id": "e3da",
-      "name": "aaa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 4,
-      "category": "chaise"
-    },
-    {
-      "id": "05e5",
-      "name": "aaa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 2,
-      "category": "chaise"
-    },
-    {
-      "id": "288b",
-      "name": "aaaa",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 33,
-      "category": "chaise"
-    },
-    {
-      "id": "dfc3",
-      "name": "9at3a",
-      "imageFront": "../assets/img/logo.png",
-      "imageBack": "../assets/img/logo.png",
-      "price": 25,
-      "category": "lit"
     }
+   
   ]
 }
