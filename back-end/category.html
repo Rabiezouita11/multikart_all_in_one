@@ -13,7 +13,7 @@
     <meta name="author" content="pixelstrap">
     <link rel="icon" href="assets/images/dashboard/favicon.png" type="image/x-icon">
     <link rel="shortcut icon" href="assets/images/dashboard/favicon.png" type="image/x-icon">
-    <title>Multikart - Premium Admin Template</title>
+    <title>Multikart</title>
 
     <!-- Google font-->
     <link rel="stylesheet"
@@ -85,7 +85,7 @@
                                
                                 <li>
                                     <a href="#" id="logoutAdmin">
-                                        <i data-feather="log-out"></i> Logout
+                                        <i data-feather="log-out"></i> Déconnexion
                                     </a>
                                 </li>                            </ul>
                         </li>
@@ -111,15 +111,15 @@
                     <div class="sidebar-user">
                         <img class="img-60" src="assets/images/dashboard/user3.jpg" alt="#">
                         <div>
-                            <h6 class="f-14">JOHN</h6>
-                            <p>general manager.</p>
+                            <h6 class="f-14">Admin</h6>
+                            
                         </div>
                     </div>
                     <ul class="sidebar-menu">
                         <li>
                             <a class="sidebar-header" href="category.html">
                                 <i data-feather="home"></i>
-                                <span>Products</span>
+                                <span>Produits</span>
                             </a>
                         </li>
 
@@ -177,7 +177,7 @@
                                 <div class="card-header">
                                   
 
-                                    <button type="button" class="btn btn-primary  mt-md-0 mt-2" data-bs-toggle="modal" data-bs-target="#addProductModal">Add Products</button>
+                                    <button type="button" class="btn btn-primary  mt-md-0 mt-2" data-bs-toggle="modal" data-bs-target="#addProductModal">Ajouter Produit</button>
 
                                     <!-- Add Product Modal -->
                                     <div class="modal fade" id="addProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
@@ -195,7 +195,7 @@
                                                         </div>
 
                                                          <div class="mb-3">
-            <label for="productCategory" class="form-label">Category</label>
+            <label for="productCategory" class="form-label">Categorie</label>
             <select class="form-control" id="productCategory" required>
                 <option value="chaise">Chaise</option>
                 <option value="table">Table</option>
@@ -204,10 +204,10 @@
             </select>
         </div>
                                                         <div class="mb-3">
-                                                            <label for="productPrice" class="form-label">Price</label>
+                                                            <label for="productPrice" class="form-label">Prix</label>
                                                             <input type="number" class="form-control" id="productPrice" required>
                                                         </div>
-                                                        <button type="submit" class="btn btn-primary"  >Save</button>  
+                                                        <button type="submit" class="btn btn-primary"  >Confirmer</button>  
 
                                                     </form>
                                                 </div>
@@ -261,38 +261,7 @@
     </div>
 
     <!-- add physical product modal box -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title f-w-600" id="exampleModalLabel">Add
-                        Physical Product</h5>
-                    <button class="btn-close" type="button" data-bs-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="needs-validation">
-                        <div class="form">
-                            <div class="form-group">
-                                <label for="validationCustom01" class="mb-1">Category Name :</label>
-                                <input class="form-control" id="validationCustom01" type="text">
-                            </div>
-                            <div class="form-group mb-0">
-                                <label for="validationCustom02" class="mb-1">Category Image :</label>
-                                <input class="form-control" id="validationCustom02" type="file">
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="button">Save</button>
-                    <button class="btn btn-secondary" type="button" data-bs-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
-    </div>
+   
 
 
     <!-- Edit Product Modal -->
@@ -300,18 +269,18 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editProductModalLabel">Edit Product</h5>
+                    <h5 class="modal-title" id="editProductModalLabel">Modifier Produit</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                     <!-- Edit Product Form -->
                     <form id="editProductForm">
                         <div class="mb-3">
-                            <label for="editProductName" class="form-label">Product Name</label>
+                            <label for="editProductName" class="form-label">Nom du Produit</label>
                             <input type="text" class="form-control" id="editProductName" required>
                         </div>
                         <div class="mb-3">
-                            <label for="editProductCategory" class="form-label">Category</label>
+                            <label for="editProductCategory" class="form-label">Categorie</label>
                             <select class="form-control" id="editProductCategory" required>
                                 <option value="chaise">Chaise</option>
                                 <option value="table">Table</option>
@@ -320,12 +289,12 @@
                             </select>
                         </div>
                         <div class="mb-3">
-                            <label for="editProductPrice" class="form-label">Price (TND)</label>
+                            <label for="editProductPrice" class="form-label">Prix (TND)</label>
                             <input type="number" step="0.01" class="form-control" id="editProductPrice" required>
                         </div>
                         <!-- Hidden input to store the product ID -->
                         <input type="hidden" id="editProductId">
-                        <button type="submit" class="btn btn-primary">Update Product</button>
+                        <button type="submit" class="btn btn-primary">Modifier Produit</button>
                     </form>
                 </div>
             </div>

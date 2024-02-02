@@ -1,5 +1,5 @@
 // RTl & Ltr
-$('<ul class="custom-theme"><li class="demo-li"><a href="../front-end/index.html" target="_blank">Front end</a></li><li class="btn-rtl">RTL</li><li class="btn-dark-setting">Dark</li></ul>').appendTo($('body'));
+$('').appendTo($('body'));
 (function () {
 })();
 //live customizer js

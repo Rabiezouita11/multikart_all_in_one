@@ -42,7 +42,7 @@ async function updatePanierPreview() {
                     <td>
                         <button onclick="removeFromCart('${
                           item.id
-                        }')" class="btn btn-danger btn-sm">Remove</button>
+                        }')" class="btn btn-danger btn-sm">Supprimer</button>
                     </td>
                     <td>${item.totalPrice.toFixed(2)}TND</td>
                 `;

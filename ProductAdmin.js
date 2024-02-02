@@ -80,8 +80,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${product.category}</td>
                     <td>${product.price.toFixed(2)}TND</td>
                     <td>
-                        <button class="btn btn-primary">Edit</button>
-                        <button class="btn btn-danger">Delete</button>
+                        <button class="btn btn-primary">Modifier</button>
+                        <button class="btn btn-danger">Supprimer</button>
                     </td>
                 </tr>
             `;
