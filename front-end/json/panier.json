@@ -1,3 +1,20 @@
 {
-  "shoppingCart": []
+  "shoppingCart": [
+    {
+      "id": "3633",
+      "name": "chaise malmo",
+      "price": 40,
+      "quantity": 2,
+      "totalPrice": 80,
+      "imageFront": "../assets/img/malmo2.png"
+    },
+    {
+      "id": "d151",
+      "name": "Chaise en tissu patchwork avec accoudoirs",
+      "price": 40,
+      "quantity": 1,
+      "totalPrice": 40,
+      "imageFront": "../assets/img/Chaise en tissu patchwork avec accoudoirs.jpg"
+    }
+  ]
 }
